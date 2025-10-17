@@ -40,9 +40,7 @@ body {
     width: 21cm;
     min-height: 29.7cm;
     height: 29.7cm;
-    /* Fijamos la altura para impresión */
     padding: 1.5cm;
-    /* AJUSTE: Reducido ligeramente si es necesario, pero 1.5cm es estándar */
     background-color: #f4ede1;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     position: relative;
@@ -51,27 +49,12 @@ body {
     overflow: hidden;
 }
 
-.print-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background-color: #734F43;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1000;
-    font-family: 'ITC Benguiat Std', serif;
-    font-size: 16px;
-}
-
 @media print {
     body {
         background-color: transparent;
     }
 
-    .print-button {
+    .controls-container {
         display: none;
     }
 
@@ -103,7 +86,6 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 25px;
-    /* AJUSTE: Reducido de 40px a 25px para ganar espacio */
     position: relative;
     z-index: 2;
 }
@@ -132,7 +114,6 @@ body {
     color: #29221E;
     font-weight: normal;
     margin-bottom: 10px;
-    /* AJUSTE: Reducido de 15px a 10px */
     display: flex;
     align-items: center;
     gap: 10px;
@@ -147,7 +128,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6px 40px;
-    /* AJUSTE: Espacio vertical reducido de 8px a 6px */
     padding-left: 40px;
 }
 
@@ -159,7 +139,6 @@ body {
     width: 100%;
     background-color: #b2a18e;
     margin: 15px 0;
-    /* AJUSTE: Reducido de 20px a 15px */
 }
 
 /* --- Estilos para MenuItem.jsx --- */
@@ -190,51 +169,62 @@ body {
 
 .item-description {
     font-size: 11px;
-    /* AJUSTE: Reducido de 12px a 11px para compactar descripciones largas */
     color: #555;
     line-height: 1.2;
-    /* AJUSTE: Línea más compacta */
     margin-top: 2px;
 }
+
 /* =============================================== */
-/* 5. ESTILOS PARA CONTROLES DE USUARIO           */
+/* 5. ESTILOS PARA CONTROLES DE USUARIO (CORREGIDO) */
 /* =============================================== */
 .controls-container {
     position: fixed;
-    top: 80px;
+    top: 20px;
+    /* AJUSTE: Posición superior para el contenedor */
     right: 20px;
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    /* AJUSTE: Organiza los botones verticalmente */
+    align-items: flex-end;
+    /* AJUSTE: Alinea los botones a la derecha */
+    gap: 20px;
     z-index: 1000;
 }
 
-
-.upload-button {
+.print-button,
+.upload-button,
+.view-button {
     padding: 10px 20px;
-    background-color: #734F43;
-    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-family: 'ITC Benguiat Std', serif;
     font-size: 16px;
     transition: background-color 0.2s;
+    color: white;
 }
 
+.print-button,
+.upload-button {
+    background-color: #734F43;
+}
 
+.view-button {
+    background-color: #a66844;
+}
+
+.print-button:hover,
 .upload-button:hover {
     background-color: #5a3c31;
 }
 
-/* Ocultar los controles al imprimir */
-@media print {
-    .controls-container {
-        display: none;
-    }
+.view-button:hover {
+    background-color: #8a5433;
 }
 
+
 /* =============================================== */
-/* 5. ESTILOS PARA EL FLIPBOOK (VISTA DE REVISTA) */
+/* 6. ESTILOS PARA EL FLIPBOOK (VISTA DE REVISTA) */
 /* =============================================== */
 
 .flipbook-overlay {
@@ -254,7 +244,6 @@ body {
 .flipbook-container {
     width: 90vw;
     height: calc(90vw * 1.414 / 2);
-    /* A4 aspect ratio (29.7/21 = 1.414), for two pages */
     max-width: 1200px;
     max-height: calc(1200px * 1.414 / 2);
     perspective: 2500px;
@@ -303,10 +292,13 @@ body {
     z-index: 1;
 }
 
-/* Escalar los componentes de página para que quepan en el libro */
+.flipbook-page.hide-behind {
+    display: none;
+}
+
+
 .flipbook-page .menu-page {
-    transform: scale(0.25);
-    /* Escala el contenido A4 para que quepa */
+    transform: scale(0.612);
     transform-origin: top left;
     width: 21cm;
     height: 29.7cm;
@@ -349,21 +341,4 @@ body {
     font-size: 30px;
     font-weight: bold;
     cursor: pointer;
-}
-
-/* Botón para abrir el visor */
-.view-button {
-    padding: 10px 20px;
-    background-color: #a66844;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'ITC Benguiat Std', serif;
-    font-size: 16px;
-    transition: background-color 0.2s;
-}
-
-.view-button:hover {
-    background-color: #8a5433;
 }

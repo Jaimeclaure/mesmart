@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-import React from 'react'; // <-- ¡AQUÍ ESTÁ LA CORRECCIÓN PRINCIPAL!
+import React from 'react';
 
 // Importar todas las páginas estáticas
 import Pagina1a from './pages/Pagina1a.jsx';
@@ -16,7 +16,7 @@ import Pagina7b from './pages/Pagina7b.jsx';
 import Pagina8a from './pages/Pagina8a.jsx';
 import Pagina8b from './pages/Pagina8b.jsx';
 
-// Importar componentes y datos LOCALES de respaldo
+// Importar componentes y datos
 import MenuPage from './components/MenuPage.jsx';
 import MenuCategory from './components/MenuCategory.jsx';
 import JsonUploader from './components/JsonUploader.jsx';
@@ -25,7 +25,8 @@ import initialHamburguesaData from './data/productoHamburguesa.json';
 import initialBistroData from './data/productoBistro.json';
 import initialPostreData from './data/productoPostre.json';
 
-// --- NUEVO COMPONENTE: FLIPBOOK VIEW ---
+
+// --- COMPONENTE FLIPBOOK VIEW (CORREGIDO) ---
 const FlipbookView = ({ onClose, pages }) => {
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -42,17 +43,26 @@ const FlipbookView = ({ onClose, pages }) => {
       <div className="flipbook-container" onClick={(e) => e.stopPropagation()}>
         <button className="flipbook-close-button" onClick={onClose}>&times;</button>
         <div className="flipbook">
-          {pages.map((page, index) => (
-            <div
-              key={`flipbook-page-${index}`}
-              className={`flipbook-page ${index < currentPage ? 'flipped' : ''}`}
-              style={{ zIndex: pages.length - index }}
-              onClick={() => setCurrentPage(index < currentPage ? index : index + 1)}
-            >
-              <div className="page-face page-front">{page.front}</div>
-              <div className="page-face page-back">{page.back}</div>
-            </div>
-          ))}
+          {pages.map((page, index) => {
+            const isFlipped = index < currentPage;
+            
+            // --- ¡AQUÍ ESTÁ LA NUEVA LÓGICA! ---
+            // Las páginas volteadas (izquierda) aumentan su z-index para apilarse correctamente.
+            // Las páginas por voltear (derecha) mantienen su orden natural decreciente.
+            const zIndex = isFlipped ? index + 1 : pages.length - index;
+
+            return (
+              <div
+                key={`flipbook-page-${index}`}
+                className={`flipbook-page ${isFlipped ? 'flipped' : ''}`}
+                style={{ zIndex: zIndex }} // Aplicamos el z-index dinámico
+                onClick={() => setCurrentPage(isFlipped ? index : index + 1)}
+              >
+                <div className="page-face page-front">{page.front}</div>
+                <div className="page-face page-back">{page.back}</div>
+              </div>
+            );
+          })}
         </div>
         <div className="flipbook-controls">
           <button onClick={goToPrevPage} disabled={currentPage === 0} className="flipbook-nav-button">Anterior</button>
@@ -65,7 +75,7 @@ const FlipbookView = ({ onClose, pages }) => {
 };
 
 
-// Función para procesar los datos del menú
+// (El resto del archivo App.jsx, incluyendo processMenuData y la función App, no necesita cambios)
 const processMenuData = (cafe, hamburguesa, bistro, postre) => {
     const safeFilter = (data, key, filterFn) => (data && data[key] ? data[key].filter(filterFn) : []);
     return {
@@ -226,3 +236,4 @@ function App() {
 }
 
 export default App;
+
