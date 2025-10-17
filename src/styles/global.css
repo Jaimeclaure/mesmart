@@ -232,3 +232,138 @@ body {
         display: none;
     }
 }
+
+/* =============================================== */
+/* 5. ESTILOS PARA EL FLIPBOOK (VISTA DE REVISTA) */
+/* =============================================== */
+
+.flipbook-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.flipbook-container {
+    width: 90vw;
+    height: calc(90vw * 1.414 / 2);
+    /* A4 aspect ratio (29.7/21 = 1.414), for two pages */
+    max-width: 1200px;
+    max-height: calc(1200px * 1.414 / 2);
+    perspective: 2500px;
+}
+
+.flipbook {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.flipbook-page {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+    cursor: pointer;
+    background-color: #f4ede1;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.flipbook-page.flipped {
+    transform: rotateY(-180deg);
+}
+
+.flipbook-page .page-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.flipbook-page .page-front {
+    z-index: 2;
+}
+
+.flipbook-page .page-back {
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+
+/* Escalar los componentes de página para que quepan en el libro */
+.flipbook-page .menu-page {
+    transform: scale(0.25);
+    /* Escala el contenido A4 para que quepa */
+    transform-origin: top left;
+    width: 21cm;
+    height: 29.7cm;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.flipbook-controls {
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.flipbook-nav-button {
+    padding: 8px 16px;
+    background-color: #734F43;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'ITC Benguiat Std', serif;
+    font-size: 16px;
+}
+
+.flipbook-nav-button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+.flipbook-close-button {
+    position: absolute;
+    top: -35px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Botón para abrir el visor */
+.view-button {
+    padding: 10px 20px;
+    background-color: #a66844;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'ITC Benguiat Std', serif;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.view-button:hover {
+    background-color: #8a5433;
+}

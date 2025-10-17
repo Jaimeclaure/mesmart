@@ -1,8 +1,7 @@
-// src/App.jsx
 import { useState, useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
-// Las importaciones ahora coincidirán con los nombres de archivo renombrados
+// Importar todas las páginas estáticas
 import Pagina1a from './pages/Pagina1a.jsx';
 import Pagina1b from './pages/Pagina1b.jsx';
 import Pagina2a from './pages/Pagina2a.jsx';
@@ -16,7 +15,7 @@ import Pagina7b from './pages/Pagina7b.jsx';
 import Pagina8a from './pages/Pagina8a.jsx';
 import Pagina8b from './pages/Pagina8b.jsx';
 
-// Importar componentes y datos LOCALES de respaldo
+// Importar componentes y datos
 import MenuPage from './components/MenuPage.jsx';
 import MenuCategory from './components/MenuCategory.jsx';
 import JsonUploader from './components/JsonUploader.jsx';
@@ -25,60 +24,96 @@ import initialHamburguesaData from './data/productoHamburguesa.json';
 import initialBistroData from './data/productoBistro.json';
 import initialPostreData from './data/productoPostre.json';
 
-// (El resto del archivo App.jsx permanece exactamente igual que en mi mensaje anterior)
 
-// Función para procesar los datos
-const processMenuData = (cafe, hamburguesa, bistro, postre) => {
-  const safeFilter = (data, key, filterFn) => (data && data[key] ? data[key].filter(filterFn) : []);
-  
-  return {
-    cafe: {
-      añadir: safeFilter(cafe, 'productosCafes', p => p.tipo === 'añadir'),
-      tazaPequeña: safeFilter(cafe, 'productosCafes', p => p.tipo === 'tazaPequeña'),
-      tazaMedianaGrande: safeFilter(cafe, 'productosCafes', p => p.tipo === 'tazaMedianaGrande'),
-      especiales: safeFilter(cafe, 'productosCafes', p => p.tipo === 'tazaEspeciales'),
-      frios: safeFilter(cafe, 'productosCafes', p => p.tipo === 'frio'),
-      infusiones: safeFilter(cafe, 'productosCafes', p => p.tipo === 'infusion'),
-    },
-    hamburguesa: {
-      extras: safeFilter(hamburguesa, 'productosHamburguesas', p => p.tipo === 'Extra'),
-      clasicas: safeFilter(hamburguesa, 'productosHamburguesas', p => p.tipo === 'clasicas'),
-      autenticas: safeFilter(hamburguesa, 'productosHamburguesas', p => p.tipo === 'autenticas'),
-      exoticas: safeFilter(hamburguesa, 'productosHamburguesas', p => p.tipo === 'exoticas'),
-    },
-    bistro: {
-      paninis: safeFilter(bistro, 'productosBistro', p => p.tipo.toLowerCase() === 'paninis'),
-      croissant: safeFilter(bistro, 'productosBistro', p => p.tipo.toLowerCase() === 'croissant'),
-      salados: safeFilter(bistro, 'productosBistro', p => p.tipo.toLowerCase() === 'salados'),
-    },
-    postre: {
-      helados: safeFilter(postre, 'productosPostres', p => p.tipo === 'Helados'),
-      postres: safeFilter(postre, 'productosPostres', p => p.tipo === 'Postres'),
-      jugos1: safeFilter(postre, 'productosPostres', p => p.tipo === 'Jugos1'),
-      jugos2: safeFilter(postre, 'productosPostres', p => p.tipo === 'Jugos2'),
-      bebidas: safeFilter(postre, 'productosPostres', p => p.tipo === 'Bebidas'),
-    }
+// --- NUEVO COMPONENTE: FLIPBOOK VIEW ---
+const FlipbookView = ({ onClose, pages }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const goToNextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, pages.length));
   };
+
+  const goToPrevPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 0));
+  };
+
+  return (
+    <div className="flipbook-overlay" onClick={onClose}>
+      <div className="flipbook-container" onClick={(e) => e.stopPropagation()}>
+        <button className="flipbook-close-button" onClick={onClose}>&times;</button>
+        <div className="flipbook">
+          {pages.map((page, index) => (
+            <div
+              key={index}
+              className={`flipbook-page ${index < currentPage ? 'flipped' : ''}`}
+              style={{ zIndex: pages.length - index }}
+              onClick={() => setCurrentPage(index < currentPage ? index : index + 1)}
+            >
+              <div className="page-face page-front">{page.front}</div>
+              <div className="page-face page-back">{page.back}</div>
+            </div>
+          ))}
+        </div>
+        <div className="flipbook-controls">
+          <button onClick={goToPrevPage} disabled={currentPage === 0} className="flipbook-nav-button">Anterior</button>
+          <span>Página {currentPage} de {pages.length}</span>
+          <button onClick={goToNextPage} disabled={currentPage === pages.length} className="flipbook-nav-button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+// Función para procesar los datos del menú
+const processMenuData = (cafe, hamburguesa, bistro, postre) => {
+    // ... (la función de procesamiento de datos no cambia)
+    const safeFilter = (data, key, filterFn) => (data && data[key] ? data[key].filter(filterFn) : []);
+    return {
+        cafe: {
+          añadir: safeFilter(cafe, 'productosCafes', p => p.tipo === 'añadir'),
+          tazaPequeña: safeFilter(cafe, 'productosCafes', p => p.tipo === 'tazaPequeña'),
+          tazaMedianaGrande: safeFilter(cafe, 'productosCafes', p => p.tipo === 'tazaMedianaGrande'),
+          especiales: safeFilter(cafe, 'productosCafes', p => p.tipo === 'tazaEspeciales'),
+          frios: safeFilter(cafe, 'productosCafes', p => p.tipo === 'frio'),
+          infusiones: safeFilter(cafe, 'productosCafes', p => p.tipo === 'infusion'),
+        },
+        hamburguesa: {
+          extras: safeFilter(hamburguesa, 'productosHamburguesas', p => p.tipo === 'Extra'),
+          clasicas: safeFilter(hamburguesa, 'productosHamburguesas', p => p.tipo === 'clasicas'),
+          autenticas: safeFilter(hamburguesa, 'productosHamburguesas', p => p.tipo === 'autenticas'),
+          exoticas: safeFilter(hamburguesa, 'productosHamburguesas', p => p.tipo === 'exoticas'),
+        },
+        bistro: {
+          paninis: safeFilter(bistro, 'productosBistro', p => p.tipo.toLowerCase() === 'paninis'),
+          croissant: safeFilter(bistro, 'productosBistro', p => p.tipo.toLowerCase() === 'croissant'),
+          salados: safeFilter(bistro, 'productosBistro', p => p.tipo.toLowerCase() === 'salados'),
+        },
+        postre: {
+          helados: safeFilter(postre, 'productosPostres', p => p.tipo === 'Helados'),
+          postres: safeFilter(postre, 'productosPostres', p => p.tipo === 'Postres'),
+          jugos1: safeFilter(postre, 'productosPostres', p => p.tipo === 'Jugos1'),
+          jugos2: safeFilter(postre, 'productosPostres', p => p.tipo === 'Jugos2'),
+          bebidas: safeFilter(postre, 'productosPostres', p => p.tipo === 'Bebidas'),
+        }
+    };
 };
 
 function App() {
   const componentRef = useRef();
   const [rawData, setRawData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showFlipbook, setShowFlipbook] = useState(false); // Estado para el visor
 
   useEffect(() => {
+    // ... (la lógica para cargar datos iniciales no cambia)
     const fetchInitialData = async () => {
       setIsLoading(true);
       try {
         const response = await fetch('/.netlify/functions/get-products');
         if (!response.ok) {
           console.warn("No se pudo conectar al servidor. Usando datos locales de respaldo.");
-          setRawData({
-            cafe: initialCafeData,
-            hamburguesa: initialHamburguesaData,
-            bistro: initialBistroData,
-            postre: initialPostreData,
-          });
+          setRawData({ cafe: initialCafeData, hamburguesa: initialHamburguesaData, bistro: initialBistroData, postre: initialPostreData });
         } else {
           const data = await response.json();
           setRawData({
@@ -90,12 +125,7 @@ function App() {
         }
       } catch (error) {
         console.error("Error al cargar datos, usando respaldo local:", error);
-        setRawData({
-            cafe: initialCafeData,
-            hamburguesa: initialHamburguesaData,
-            bistro: initialBistroData,
-            postre: initialPostreData,
-        });
+        setRawData({ cafe: initialCafeData, hamburguesa: initialHamburguesaData, bistro: initialBistroData, postre: initialPostreData });
       } finally {
         setIsLoading(false);
       }
@@ -109,12 +139,11 @@ function App() {
   });
 
   const handleJsonUploadSuccess = (uploadedItems) => {
+    // ... (la lógica de actualización no cambia)
      setRawData(prevData => {
         const newData = { ...prevData };
         uploadedItems.forEach(item => {
-           if (item.category && item.data) {
-              newData[item.category] = item.data;
-           }
+           if (item.category && item.data) { newData[item.category] = item.data; }
         });
         return newData;
      });
@@ -126,73 +155,74 @@ function App() {
   
   const menuData = processMenuData(rawData.cafe, rawData.hamburguesa, rawData.bistro, rawData.postre);
 
+  const menuPagesForFlipbook = [
+    { front: <Pagina1a />, back: <Pagina1b /> },
+    { front: <Pagina2a />, back: <Pagina2b /> },
+    { front: <Pagina3a />, back: <Pagina3b /> },
+    { front: <MenuPage title="CAFÉ DE ESPECIALIDAD">
+        <MenuCategory title="Puedes añadir a tu taza" products={menuData.cafe.añadir} icon="AÑADIR.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Café Caliente" products={menuData.cafe.tazaPequeña} icon="tazaP.png" />
+        <MenuCategory products={menuData.cafe.tazaMedianaGrande} />
+        <div className="category-separator" />
+        <MenuCategory title="Especiales Fahrenheit" products={menuData.cafe.especiales} icon="bebidaLicor.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Café Frío" products={menuData.cafe.frios} icon="bebidaFria.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Infusiones" products={menuData.cafe.infusiones} icon="tazainfusion.png" />
+    </MenuPage>, back: <MenuPage title="HAMBURGUESAS BISTRÓ">
+        <MenuCategory title="Añade extras a tu gusto" products={menuData.hamburguesa.extras} icon="AÑADIR.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Clásicas (Medallón / Smash)" products={menuData.hamburguesa.clasicas} icon="burgerN.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Auténticas (Medallón / Smash)" products={menuData.hamburguesa.autenticas} icon="burgerN.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Exóticas (Medallón / Smash)" products={menuData.hamburguesa.exoticas} icon="burgerN.png" />
+    </MenuPage> },
+    { front: <Pagina5a />, back: <Pagina5b /> },
+    { front: <MenuPage title="SABORES BISTRÓ">
+        <MenuCategory title="Paninis" products={menuData.bistro.paninis} icon="panini.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Croissant" products={menuData.bistro.croissant} icon="croissant.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Salados" products={menuData.bistro.salados} icon="sandwich.png" />
+    </MenuPage>, back: <MenuPage title="POSTRES & BEBIDAS">
+        <MenuCategory title="Helados" products={menuData.postre.helados} icon="helado.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Postres" products={menuData.postre.postres} icon="torta.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Jugos Especiales en Copa" products={menuData.postre.jugos1} icon="jugos.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Jugos Naturales en Jarra" products={menuData.postre.jugos2} icon="jarra.png" />
+        <div className="category-separator" />
+        <MenuCategory title="Gaseosas y Bebidas" products={menuData.postre.bebidas} icon="bebidas.png" />
+    </MenuPage> },
+    { front: <Pagina7a />, back: <Pagina7b /> },
+    { front: <Pagina8a />, back: <Pagina8b /> },
+  ];
+
   return (
     <>
+      {showFlipbook && <FlipbookView onClose={() => setShowFlipbook(false)} pages={menuPagesForFlipbook} />}
+      
       <div className="controls-container">
+        <button onClick={() => setShowFlipbook(true)} className="view-button">
+          Vista Interactiva
+        </button>
         <JsonUploader onUploadSuccess={handleJsonUploadSuccess} />
         <button onClick={handlePrint} className="print-button">
-          Generar PDF del Menú
+          Generar PDF
         </button>
       </div>
+
+      {/* Este es el contenedor que se imprime */}
       <div ref={componentRef} className="menu-container">
-        
-        <Pagina1a />
-        <Pagina1b />
-        <Pagina2a />
-        <Pagina2b />
-        <Pagina3a />
-        <Pagina3b />
-
-        <MenuPage title="CAFÉ DE ESPECIALIDAD">
-          <MenuCategory title="Puedes añadir a tu taza" products={menuData.cafe.añadir} icon="AÑADIR.png" />
-          <div className="category-separator" />
-          <MenuCategory title="Café Caliente" products={menuData.cafe.tazaPequeña} icon="tazaP.png" />
-          <MenuCategory products={menuData.cafe.tazaMedianaGrande} />
-          <div className="category-separator" />
-          <MenuCategory title="Especiales Fahrenheit" products={menuData.cafe.especiales} icon="bebidaLicor.png" />
-          <div className="category-separator" />
-          <MenuCategory title="Café Frío" products={menuData.cafe.frios} icon="bebidaFria.png" />
-          <div className="category-separator" />
-          <MenuCategory title="Infusiones" products={menuData.cafe.infusiones} icon="tazainfusion.png" />
-        </MenuPage>
-
-        <MenuPage title="HAMBURGUESAS BISTRÓ">
-          <MenuCategory title="Añade extras a tu gusto" products={menuData.hamburguesa.extras} icon="AÑADIR.png" />
-          <div className="category-separator" />
-          <MenuCategory title="Clásicas (Medallón / Smash)" products={menuData.hamburguesa.clasicas} icon="burgerN.png" />
-          <div className="category-separator" />
-          <MenuCategory title="Auténticas (Medallón / Smash)" products={menuData.hamburguesa.autenticas} icon="burgerN.png" />
-          <div className="category-separator" />
-          <MenuCategory title="Exóticas (Medallón / Smash)" products={menuData.hamburguesa.exoticas} icon="burgerN.png" />
-        </MenuPage>
-        
-        <Pagina5a />
-        <Pagina5b />
-
-        <MenuPage title="SABORES BISTRÓ">
-            <MenuCategory title="Paninis" products={menuData.bistro.paninis} icon="panini.png" />
-            <div className="category-separator" />
-            <MenuCategory title="Croissant" products={menuData.bistro.croissant} icon="croissant.png" />
-            <div className="category-separator" />
-            <MenuCategory title="Salados" products={menuData.bistro.salados} icon="sandwich.png" />
-        </MenuPage>
-
-        <MenuPage title="POSTRES & BEBIDAS">
-            <MenuCategory title="Helados" products={menuData.postre.helados} icon="helado.png" />
-            <div className="category-separator" />
-            <MenuCategory title="Postres" products={menuData.postre.postres} icon="torta.png" />
-            <div className="category-separator" />
-            <MenuCategory title="Jugos Especiales en Copa" products={menuData.postre.jugos1} icon="jugos.png" />
-            <div className="category-separator" />
-            <MenuCategory title="Jugos Naturales en Jarra" products={menuData.postre.jugos2} icon="jarra.png" />
-            <div className="category-separator" />
-            <MenuCategory title="Gaseosas y Bebidas" products={menuData.postre.bebidas} icon="bebidas.png" />
-        </MenuPage>
-
-        <Pagina7a />
-        <Pagina7b />
-        <Pagina8a />
-        <Pagina8b />
+          {menuPagesForFlipbook.map((page, index) => (
+              <React.Fragment key={index}>
+                  {page.front}
+                  {page.back}
+              </React.Fragment>
+          ))}
       </div>
     </>
   );
