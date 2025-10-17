@@ -1,0 +1,268 @@
+{
+    "productosCafes": [
+        {
+            "id": 1,
+            "categoria": "cafe",
+            "nombre": "Jarabe de Vainilla",
+            "tipo": "añadir",
+            "precio1": 6
+        },
+        {
+            "id": 2,
+            "categoria": "cafe",
+            "nombre": "Jarabe de Caramelo",
+            "tipo": "añadir",
+            "precio1": 6
+        },
+        {
+            "id": 3,
+            "categoria": "cafe",
+            "nombre": "Leche Vegetal",
+            "tipo": "añadir",
+            "precio1": 5
+        },
+        {
+            "id": 4,
+            "categoria": "cafe",
+            "nombre": "Leche Deslactosada",
+            "tipo": "añadir",
+            "precio1": 3
+        },
+        {
+            "id": 5,
+            "categoria": "cafe",
+            "nombre": "Espresso",
+            "tipo": "tazaPequeña",
+            "precio1": 5,
+            "precio2": 13
+        },
+        {
+            "id": 6,
+            "categoria": "cafe",
+            "nombre": "Macchiato",
+            "tipo": "tazaPequeña",
+            "precio1": 13,
+            "precio2": 16
+        },
+        {
+            "id": 7,
+            "categoria": "cafe",
+            "nombre": "Cortadito",
+            "tipo": "tazaPequeña",
+            "precio1": 5,
+            "precio2": 16
+        },
+        {
+            "id": 8,
+            "categoria": "cafe",
+            "nombre": "Flat White",
+            "tipo": "tazaMedianaGrande",
+            "precio1": 18
+        },
+        {
+            "id": 9,
+            "categoria": "cafe",
+            "nombre": "Americano",
+            "tipo": "tazaMedianaGrande",
+            "precio1": 5,
+            "precio2": 16
+        },
+        {
+            "id": 10,
+            "categoria": "cafe",
+            "nombre": "Long Black",
+            "tipo": "tazaMedianaGrande",
+            "precio1": 17
+        },
+        {
+            "id": 11,
+            "categoria": "cafe",
+            "nombre": "Cappuccino",
+            "tipo": "tazaMedianaGrande",
+            "precio1": 5,
+            "precio2": 19
+        },
+        {
+            "id": 12,
+            "categoria": "cafe",
+            "nombre": "Latte",
+            "tipo": "tazaMedianaGrande",
+            "precio1": 5,
+            "precio2": 20
+        },
+        {
+            "id": 13,
+            "categoria": "cafe",
+            "nombre": "Mocca",
+            "tipo": "tazaMedianaGrande",
+            "precio1": 18
+        },
+        {
+            "id": 14,
+            "categoria": "cafe",
+            "nombre": "Mocaccino",
+            "tipo": "tazaMedianaGrande",
+            "precio1": 24
+        },
+        {
+            "id": 15,
+            "categoria": "cafe",
+            "nombre": "Peppermint Latte",
+            "tipo": "tazaEspeciales",
+            "precio1": 18
+        },
+        {
+            "id": 16,
+            "categoria": "cafe",
+            "nombre": "Red Fruits Latte",
+            "tipo": "tazaEspeciales",
+            "precio1": 19 
+        },
+        {
+            "id": 17,
+            "categoria": "cafe",
+            "nombre": "Matcha Latte",
+            "tipo": "tazaEspeciales",
+            "precio1": 22
+        },
+        {
+            "id": 18,
+            "categoria": "cafe",
+            "nombre": "Café Baileys",
+            "tipo": "tazaEspeciales",
+            "precio1": 35
+        },
+        {
+            "id": 19,
+            "categoria": "cafe",
+            "nombre": "Café Amarula",
+            "tipo": "tazaEspeciales",
+            "precio1": 35
+        },
+        {
+            "id": 20,
+            "categoria": "cafe",
+            "nombre": "Leche con Chocolate Art",
+            "tipo": "tazaEspeciales",
+            "precio1": 15
+        },
+        {
+            "id": 21,
+            "categoria": "cafe",
+            "nombre": "Café Irlandés",
+            "tipo": "tazaEspeciales",
+            "precio1": 35
+        },
+        {
+            "id": 22,
+            "categoria": "cafe",
+            "nombre": "Ice Matcha Latte",
+            "tipo": "tazaEspeciales",
+            "precio1": 24,
+            "precio2": 27
+        },
+        {
+            "id": 23,
+            "categoria": "cafe",
+            "nombre": "Ice Tea",
+            "tipo": "frio",
+            "precio1": 16,
+            "precio2": 20
+        },
+        {
+            "id": 24,
+            "categoria": "cafe",
+            "nombre": "Ice Americano",
+            "tipo": "frio",
+            "precio1": 10,
+            "precio2": 18
+        },
+        {
+            "id": 25,
+            "categoria": "cafe",
+            "nombre": "Orange Coffee",
+            "tipo": "frio",
+            "precio1": 19,
+            "precio2": 23
+        },
+        {
+            "id": 26,
+            "categoria": "cafe",
+            "nombre": "Ice Latte",
+            "tipo": "frio",
+            "precio1": 10,
+            "precio2": 20
+        },
+        {
+            "id": 27,
+            "categoria": "cafe",
+            "nombre": "Sabores de Frappuccinos: Clásico, Moca, Caramelo, Óreo, Frutilla",
+            "tipo": "frio",
+            "precio1": 22
+        },
+        {
+            "id": 28,
+            "categoria": "cafe",
+            "nombre": "Espresso Gas Lemonade",
+            "tipo": "frio",
+            "precio1": 18,
+            "precio2": 22
+        },
+        {
+            "id": 29,
+            "categoria": "cafe",
+            "nombre": "Manzanilla",
+            "tipo": "infusion",
+            "precio1": 10
+        },
+        {
+            "id": 30,
+            "categoria": "cafe",
+            "nombre": "Cedrón",
+            "tipo": "infusion",
+            "precio1": 10
+        },
+        {
+            "id": 31,
+            "categoria": "cafe",
+            "nombre": "Menta",
+            "tipo": "infusion",
+            "precio1": 10
+        },
+        {
+            "id": 32,
+            "categoria": "cafe",
+            "nombre": "Canela",
+            "tipo": "infusion",
+            "precio1": 10
+        },
+        {
+            "id": 33,
+            "categoria": "cafe",
+            "nombre": "Té (preguntar variedad)",
+            "tipo": "infusion",
+            "precio1": 16
+        },
+        {
+            "id": 34,
+            "categoria": "cafe",
+            "nombre": "Jengibre",
+            "tipo": "infusion",
+            "precio1": 10
+        },
+        {
+            "id": 35,
+            "categoria": "cafe",
+            "nombre": "Ice Cappuccino",
+            "tipo": "frio",
+            "precio1": 10
+        },
+        {
+            "id": 36,
+            "categoria": "cafe",
+            "nombre": "Cuatro Aspas",
+            "tipo": "frio",
+            "precio1": 30
+        }
+    ]
+}

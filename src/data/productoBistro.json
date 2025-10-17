@@ -1,0 +1,91 @@
+{
+    "productosBistro": [
+        {
+            "id": 1,
+            "categoria": "bistro",
+            "nombre": "Panini Steak",
+            "descripcion": "Pan, Carne, jamón, tocino, queso mozzarella, cebolla caramelizada, salsa de la casa, tomate, huevo, papas fritas.",
+            "tipo": "Paninis",
+            "precio1": 40
+        },
+        {
+            "id": 2,
+            "categoria": "bistro",
+            "nombre": "Panini Mediterráneo",
+            "descripcion": "Pan, Carne, queso cheddar, cebolla a la plancha, palta, salsa de la casa, papas fritas.",
+            "tipo": "Paninis",
+            "precio1": 39
+        },
+        {
+            "id": 3,
+            "categoria": "bistro",
+            "nombre": "Lomito de la Casa",
+            "descripcion": "Pan, carne, mozzarrella, huevo, jamón, tomate, cebolla, lechuga, salsa de la casa, papas fritas.",
+            "tipo": "Paninis",
+            "precio1": 39
+        },
+        {
+            "id": 4,
+            "categoria": "bistro",
+            "nombre": "Croissant Bacon",
+            "descripcion": "Rúcula, mozzarella, tocino, huevo, tomate, salsa de la casa.",
+            "tipo": "Croissant",
+            "precio1": 24
+        },
+        {
+            "id": 5,
+            "categoria": "bistro",
+            "nombre": "Croissant Nápoles",
+            "descripcion": "Rúcula, jamón, mozzarella, tomate, salsa de la casa.",
+            "tipo": "Croissant",
+            "precio1": 19
+        },
+        {
+            "id": 6,
+            "categoria": "bistro",
+            "nombre": "Croissant Club",
+            "descripcion": "Rúcula, jamón, mozzarella, huevo, tomate, salsa de la casa.",
+            "tipo": "Croissant",
+            "precio1": 21
+        },
+        {
+            "id": 7,
+            "categoria": "bistro",
+            "nombre": "Croissant a la Creme",
+            "descripcion": "Crema, frutillas, jarabe de frutilla, azúcar glass.",
+            "tipo": "Croissant",
+            "precio1": 21
+        },
+        {
+            "id": 8,
+            "categoria": "bistro",
+            "nombre": "Croissant",
+            "descripcion": "Sin Relleno.",
+            "tipo": "Croissant",
+            "precio1": 10
+        },
+        {
+            "id": 9,
+            "categoria": "bistro",
+            "nombre": "Croque de Jamón y queso",
+            "descripcion": "Pan pita, jamón, queso mozzarella, pimenton, salsa de la casa.",
+            "tipo": "Salados",
+            "precio1": 20
+        },
+        {
+            "id": 10,
+            "categoria": "bistro",
+            "nombre": "Tartine de Palta",
+            "descripcion": "Pan multicereal, palta, salsa de la casa, sésamo.",
+            "tipo": "Salados",
+            "precio1": 25
+        },
+        {
+            "id": 31,
+            "categoria": "postre",
+            "nombre": "Croissant sin relleno",
+            "tipo": "Croissant",
+            "precio1": 10
+        }
+    ]
+}

@@ -1,0 +1,81 @@
+{
+    "productosHamburguesas": [
+        {
+            "id": 1,
+            "categoria": "hamburguesa",
+            "nombre": "Papas Fritas",
+            "tipo": "Extra",
+            "precio1": 14
+        },
+        {
+            "id": 2,
+            "categoria": "hamburguesa",
+            "nombre": "Papas Bacon Cheese",
+            "tipo": "Extra",
+            "precio1": 26
+        },
+        {
+            "id": 3,
+            "categoria": "hamburguesa",
+            "nombre": "Fahrenheit Burger",
+            "descripcion": "100% carne, cheddar, huevo, tomate, cebolla caramelizada, bacon, salsa de la casa, pan, papas fritas.",
+            "tipo": "autenticas",
+            "precio1": 32,
+            "precio2": 41
+        },
+        {
+            "id": 4,
+            "categoria": "hamburguesa",
+            "nombre": "Jalapeño Burger",
+            "descripcion": "100% carne, cheddar, pico de gallo, salsa fahrenheit, jalapeño, tocino ahumado, pan, papas fritas.",
+            "tipo": "exoticas",
+            "precio1": 32,
+            "precio2": 41
+        },
+        {
+            "id": 5,
+            "categoria": "hamburguesa",
+            "nombre": "Tropic Burger",
+            "descripcion": "100% carne, queso azul, piña y cebolla salteada, salsa de la casa, pan, papas fritas.",
+            "tipo": "exoticas",
+            "precio1": 32,
+            "precio2": 41
+        },
+        {
+            "id": 6,
+            "categoria": "hamburguesa",
+            "nombre": "Barbecue Burger",
+            "descripcion": "100% carne, cheddar, huevo, bacon, cebolla asada, salsa barbacoa, pan, papas fritas.",
+            "tipo": "clasicas",
+            "precio1": 32,
+            "precio2": 41
+        },
+        {
+            "id": 7,
+            "categoria": "hamburguesa",
+            "nombre": "Bacon Pickles Burger",
+            "descripcion": "100% carne, cheddar, pepinillos, bacon, salsa de la casa, pan, papas fritas.",
+            "tipo": "autenticas",
+            "precio1": 32,
+            "precio2": 41
+        },
+        {
+            "id": 8,
+            "categoria": "hamburguesa",
+            "nombre": "Cheese Burger",
+            "descripcion": "100% carne, doble cheddar, pepinillo, salsa de la casa, pan, papas fritas, salsa legacy, pan, papas fritas.",
+            "tipo": "clasicas",
+            "precio1": 32,
+            "precio2": 41
+        },
+        {
+            "id": 9,
+            "categoria": "hamburguesa",
+            "nombre": "Originals Burger",
+            "descripcion": "100% carne, mozzarella, tomate, lechuga, cebolla, salsa de la casa, pan, papas fritas.",
+            "tipo": "clasicas",
+            "precio1": 27,
+            "precio2": 39
+        }
+    ]
+}

@@ -1,0 +1,234 @@
+/* =============================================== */
+/* 1. DEFINICIÓN DE FUENTES Y RESETEO             */
+/* =============================================== */
+@font-face {
+    font-family: 'ITC Benguiat Std';
+    src: url('/fonts/BenguiatStd-Book_0.otf') format('opentype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'ITC Benguiat Std';
+    src: url('/fonts/BenguiatStd-Bold_0.otf') format('opentype');
+    font-weight: bold;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'ITC Benguiat Std', serif;
+    background-color: #ccc;
+    /* Fondo gris para ver las hojas en pantalla */
+}
+
+/* =============================================== */
+/* 2. LAYOUT DE PÁGINA Y REGLAS DE IMPRESIÓN      */
+/* =============================================== */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.menu-page {
+    width: 21cm;
+    min-height: 29.7cm;
+    height: 29.7cm;
+    /* Fijamos la altura para impresión */
+    padding: 1.5cm;
+    /* AJUSTE: Reducido ligeramente si es necesario, pero 1.5cm es estándar */
+    background-color: #f4ede1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.print-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #734F43;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    font-family: 'ITC Benguiat Std', serif;
+    font-size: 16px;
+}
+
+@media print {
+    body {
+        background-color: transparent;
+    }
+
+    .print-button {
+        display: none;
+    }
+
+    .menu-container {
+        padding: 0;
+    }
+
+    .menu-page {
+        box-shadow: none;
+        margin: 0;
+        page-break-after: always;
+    }
+
+    .category-container {
+        page-break-inside: avoid;
+    }
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+/* =============================================== */
+/* 3. ESTILOS DE COMPONENTES DE MENÚ              */
+/* =============================================== */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    /* AJUSTE: Reducido de 40px a 25px para ganar espacio */
+    position: relative;
+    z-index: 2;
+}
+
+.page-logo {
+    width: 130px;
+    height: 130px;
+}
+
+.page-title {
+    font-size: 21px;
+    font-weight: bold;
+    color: #775321;
+    text-align: right;
+    padding-top: 35px;
+    padding-right: 20px;
+}
+
+.category-container {
+    position: relative;
+    z-index: 2;
+}
+
+.category-title {
+    font-size: 18px;
+    color: #29221E;
+    font-weight: normal;
+    margin-bottom: 10px;
+    /* AJUSTE: Reducido de 15px a 10px */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-title img {
+    width: 30px;
+    height: 30px;
+}
+
+.category-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 40px;
+    /* AJUSTE: Espacio vertical reducido de 8px a 6px */
+    padding-left: 40px;
+}
+
+/* =============================================== */
+/* 4. ELEMENTOS DECORATIVOS                       */
+/* =============================================== */
+.category-separator {
+    height: 1px;
+    width: 100%;
+    background-color: #b2a18e;
+    margin: 15px 0;
+    /* AJUSTE: Reducido de 20px a 15px */
+}
+
+/* --- Estilos para MenuItem.jsx --- */
+.menu-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.item-name {
+    font-size: 13px;
+    color: #734F43;
+}
+
+.item-prices {
+    display: flex;
+    gap: 25px;
+    color: #A66844;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.item-description {
+    font-size: 11px;
+    /* AJUSTE: Reducido de 12px a 11px para compactar descripciones largas */
+    color: #555;
+    line-height: 1.2;
+    /* AJUSTE: Línea más compacta */
+    margin-top: 2px;
+}
+/* =============================================== */
+/* 5. ESTILOS PARA CONTROLES DE USUARIO           */
+/* =============================================== */
+.controls-container {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+
+.upload-button {
+    padding: 10px 20px;
+    background-color: #734F43;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'ITC Benguiat Std', serif;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+
+.upload-button:hover {
+    background-color: #5a3c31;
+}
+
+/* Ocultar los controles al imprimir */
+@media print {
+    .controls-container {
+        display: none;
+    }
+}

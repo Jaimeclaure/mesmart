@@ -1,0 +1,236 @@
+{
+  "productosPostres": [
+    {
+      "id": 1,
+      "categoria": "postre",
+      "nombre": "Copa Sunday",
+      "descripcion": "Dos Porciones de Helado, frutilla, crema, jarabe de frutilla.",
+      "tipo": "Helados",
+      "precio1": 20
+    },
+    {
+      "id": 2,
+      "categoria": "postre",
+      "nombre": "Copa Vienesa",
+      "descripcion": "Tres porciones de helado vainilla, crema, frutos secos, jarabe de chocolate, cherry, café espresso.",
+      "tipo": "Helados",
+      "precio1": 35
+    },
+    {
+      "id": 3,
+      "categoria": "postre",
+      "nombre": "Copa Raspberry",
+      "descripcion": "Dos porciones de helado vainilla y porción helado frutilla, crema, mermelada de berries, cherry.",
+      "tipo": "Helados",
+      "precio1": 35
+    },
+    {
+      "id": 4,
+      "categoria": "postre",
+      "nombre": "Copa Melba",
+      "descripcion": "Tres porciones de Helado, gelatina, frutilla, crema, durazno, cherry, jarabe de frutilla.",
+      "tipo": "Helados",
+      "precio1": 35
+    },
+    {
+      "id": 5,
+      "categoria": "postre",
+      "nombre": "Porción de Tortas",
+      "descripcion": "Torta Alemana, Torta Moca, Pie de Limón y frutos rojos.",
+      "tipo": "Postres",
+      "precio1": 24
+    },
+    {
+      "id": 6,
+      "categoria": "postre",
+      "nombre": "Affogato Bailey's",
+      "descripcion": "Helado de Vainilla, Espresso, Bailey's, Crema, Jarabe de Chocolate.",
+      "tipo": "Postres",
+      "precio1": 35
+    },
+    {
+      "id": 7,
+      "categoria": "postre",
+      "nombre": "Biscotti Affogato",
+      "descripcion": "Espresso, helado, brownie, crema, jarabe de chocolate.",
+      "tipo": "Postres",
+      "precio1": 27
+    },
+    {
+      "id": 8,
+      "categoria": "postre",
+      "nombre": "Affogato Clásico",
+      "descripcion": "Helado de vainilla y espresso.",
+      "tipo": "Postres",
+      "precio1": 23
+    },
+    {
+      "id": 9,
+      "categoria": "postre",
+      "nombre": "Brownie con Helado",
+      "tipo": "Postres",
+      "precio1": 23
+    },
+    {
+      "id": 10,
+      "categoria": "postre",
+      "nombre": "Brownie de Chocolate",
+      "tipo": "Postres",
+      "precio1": 13
+    },
+    {
+      "id": 11,
+      "categoria": "postre",
+      "nombre": "Cheesecake",
+      "tipo": "Postres",
+      "precio1": 22
+    },
+    {
+      "id": 12,
+      "categoria": "postre",
+      "nombre": "Queque (Naranja, Zanahoria)",
+      "tipo": "Postres",
+      "precio1": 9
+    },
+    {
+      "id": 13,
+      "categoria": "postre",
+      "nombre": "Galleta Chocochips",
+      "tipo": "Postres",
+      "precio1": 7
+    },
+    {
+      "id": 14,
+      "categoria": "jugos1",
+      "nombre": "Red Velvet (Jugo / Frappe)",
+      "descripcion": "Frutos rojos y hierbas.",
+      "tipo": "Jugos1",
+      "precio1": 18,
+      "precio2": 20
+    },
+
+    {
+      "id": 15,
+      "categoria": "jugos1",
+      "nombre": "Verdant (Jugo / Frappe)",
+      "descripcion": "Frutos verdes y hierbas.",
+      "tipo": "Jugos1",
+      "precio1": 18,
+      "precio2": 20
+    },
+    {
+      "id": 16,
+      "categoria": "jugos1",
+      "nombre": "Rinzler (Jugo / Frappe)",
+      "descripcion": "Maracuya y variedad de cítricos.",
+      "tipo": "Jugos1",
+      "precio1": 18,
+      "precio2": 20
+    },
+    {
+      "id": 17,
+      "categoria": "jugos1",
+      "nombre": "Flynn (Jugo / Frappe)",
+      "descripcion": "Mora y variedad de cítricos con hierbas.",
+      "tipo": "Jugos1",
+      "precio1": 18,
+      "precio2": 20
+    },
+    {
+      "id": 18,
+      "categoria": "jugos1",
+      "nombre": "Licuado de Leche",
+      "descripcion": "Banana, Frutilla, Chocolate.",
+      "tipo": "Jugos1",
+      "precio1": 18
+    },
+    {
+      "id": 19,
+      "categoria": "jugos1",
+      "nombre": "Jugos de Fruta 450 ml",
+      "descripcion": "Sabores: Durazno, Frutilla, Piña.",
+      "tipo": "Jugos1",
+      "precio1": 18
+    },
+    {
+      "id": 20,
+      "categoria": "jugos2",
+      "nombre": "Jarra Limonada & Hierbas",
+      "tipo": "Jugos2",
+      "precio1": 24
+    },
+    {
+      "id": 21,
+      "categoria": "jugos2",
+      "nombre": "Jarra de Durazno",
+      "tipo": "Jugos2",
+      "precio1": 25
+    },
+    {
+      "id": 22,
+      "categoria": "jugos2",
+      "nombre": "Jarra de Frutilla",
+      "tipo": "Jugos2",
+      "precio1": 25
+    },
+    {
+      "id": 23,
+      "categoria": "jugos2",
+      "nombre": "Jarra de Piña",
+      "tipo": "Jugos2",
+      "precio1": 25
+    },
+    {
+      "id": 24,
+      "categoria": "Bebidas",
+      "nombre": "Pepsi / Seven-Up (1000 / 500 ml.)",
+      "tipo": "Bebidas",
+      "precio1": 13,
+      "precio2": 10
+    },
+    {
+      "id": 25,
+      "categoria": "Bebidas",
+      "nombre": "Coca-Cola (1000 / 500 ml.)",
+      "tipo": "Bebidas",
+      "precio1": 13,
+      "precio2": 10
+    },
+    {
+      "id": 26,
+      "categoria": "Bebidas",
+      "nombre": "Pepsi Black (500 ml.)",
+      "tipo": "Bebidas",
+      "precio1": 10
+    },
+    {
+      "id": 27,
+      "categoria": "Bebidas",
+      "nombre": "Agua VillaSanta con gas (620 ml.)",
+      "tipo": "Bebidas",
+      "precio1": 13
+    },
+    {
+      "id": 28,
+      "categoria": "Bebidas",
+      "nombre": "Agua VillaSanta sin gas (620 ml.)",
+      "tipo": "Bebidas",
+      "precio1": 9
+    },
+    {
+      "id": 29,
+      "categoria": "Bebidas",
+      "nombre": "Agua Vital con gas (600 ml.)",
+      "tipo": "Bebidas",
+      "precio1": 10
+    },
+    {
+      "id": 30,
+      "categoria": "postre",
+      "nombre": "Cuñape",
+      "tipo": "Postres",
+      "precio1": 7
+    }
+  
+  ]
+}
