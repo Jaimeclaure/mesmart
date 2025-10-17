@@ -4,7 +4,8 @@
 
 /* --- Página 1a (Portada) --- */
 .page-1a {
-    background-image: url('./public/img/front.jpg');
+    /* CORRECCIÓN: Usar ruta absoluta desde la carpeta 'public' */
+    background-image: url('/img/front.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -168,7 +169,6 @@
     left: 50%;
     transform: translateX(-50%);
     top: 40px;
-    /* AJUSTE: Movido más arriba para dar espacio al texto */
     width: 144px;
     opacity: 0.34;
 }
@@ -222,6 +222,7 @@
 
 /* --- Página 8b (Contraportada) --- */
 .page-8b {
+    /* CORRECCIÓN: Usar ruta absoluta desde la carpeta 'public' */
     background-image: url('/img/back.png');
     background-size: cover;
     background-position: center;

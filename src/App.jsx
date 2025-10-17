@@ -2,24 +2,24 @@
 import { useState, useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
-// Importar todas las páginas estáticas
-import Pagina1a from './pages/Pagina1a';
-import Pagina1b from './pages/Pagina1b';
-import Pagina2a from './pages/Pagina2a';
-import Pagina2b from './pages/Pagina2b';
-import Pagina3a from './pages/Pagina3a';
-import Pagina3b from './pages/Pagina3b';
-import Pagina5a from './pages/Pagina5a';
-import Pagina5b from './pages/Pagina5b';
-import Pagina7a from './pages/Pagina7a';
-import Pagina7b from './pages/Pagina7b';
-import Pagina8a from './pages/Pagina8a';
-import Pagina8b from './pages/Pagina8b';
+// CORRECCIÓN: Añadido .jsx a todas las importaciones de páginas
+import Pagina1a from './pages/Pagina1a.jsx';
+import Pagina1b from './pages/Pagina1b.jsx';
+import Pagina2a from './pages/Pagina2a.jsx';
+import Pagina2b from './pages/Pagina2b.jsx';
+import Pagina3a from './pages/Pagina3a.jsx';
+import Pagina3b from './pages/Pagina3b.jsx';
+import Pagina5a from './pages/Pagina5a.jsx';
+import Pagina5b from './pages/Pagina5b.jsx';
+import Pagina7a from './pages/Pagina7a.jsx';
+import Pagina7b from './pages/Pagina7b.jsx';
+import Pagina8a from './pages/Pagina8a.jsx';
+import Pagina8b from './pages/Pagina8b.jsx';
 
 // Importar componentes y datos LOCALES de respaldo
-import MenuPage from './components/MenuPage';
-import MenuCategory from './components/MenuCategory';
-import JsonUploader from './components/JsonUploader';
+import MenuPage from './components/MenuPage.jsx';
+import MenuCategory from './components/MenuCategory.jsx';
+import JsonUploader from './components/JsonUploader.jsx';
 import initialCafeData from './data/productoCafe.json';
 import initialHamburguesaData from './data/productoHamburguesa.json';
 import initialBistroData from './data/productoBistro.json';
@@ -27,7 +27,6 @@ import initialPostreData from './data/productoPostre.json';
 
 // Función para procesar los datos (la usaremos para el estado inicial y las actualizaciones)
 const processMenuData = (cafe, hamburguesa, bistro, postre) => {
-  // Función segura para evitar errores si un archivo no carga
   const safeFilter = (data, key, filterFn) => (data && data[key] ? data[key].filter(filterFn) : []);
   
   return {
@@ -60,20 +59,17 @@ const processMenuData = (cafe, hamburguesa, bistro, postre) => {
   };
 };
 
-
 function App() {
   const componentRef = useRef();
-  const [rawData, setRawData] = useState(null); // Inicia como null
+  const [rawData, setRawData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Al cargar la app, intenta obtener los datos de la base de datos
   useEffect(() => {
     const fetchInitialData = async () => {
       setIsLoading(true);
       try {
         const response = await fetch('/.netlify/functions/get-products');
         if (!response.ok) {
-          // Si falla (ej. en desarrollo local), usa los archivos JSON locales como respaldo
           console.warn("No se pudo conectar al servidor. Usando datos locales de respaldo.");
           setRawData({
             cafe: initialCafeData,
@@ -110,7 +106,6 @@ function App() {
     documentTitle: 'Fahrenheit-Coffee-Bistro-Menu',
   });
 
-  // Actualiza el estado local cuando el usuario sube nuevos archivos exitosamente
   const handleJsonUploadSuccess = (uploadedItems) => {
      setRawData(prevData => {
         const newData = { ...prevData };
@@ -123,12 +118,10 @@ function App() {
      });
   };
   
-  // Si no hay datos, muestra un mensaje de carga
   if (isLoading || !rawData) {
     return <div style={{ fontFamily: 'ITC Benguiat Std', fontSize: '24px', textAlign: 'center', padding: '50px' }}>Cargando menú...</div>;
   }
   
-  // Procesa los datos del estado actual para renderizar
   const menuData = processMenuData(rawData.cafe, rawData.hamburguesa, rawData.bistro, rawData.postre);
 
   return (
@@ -141,7 +134,6 @@ function App() {
       </div>
       <div ref={componentRef} className="menu-container">
         
-        {/* --- SECUENCIA COMPLETA DEL MENÚ --- */}
         <Pagina1a />
         <Pagina1b />
         <Pagina2a />
@@ -205,3 +197,4 @@ function App() {
 }
 
 export default App;
+
