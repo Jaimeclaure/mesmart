@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
-// CORRECCIÓN: Añadido .jsx a todas las importaciones de páginas
+// Las importaciones ahora coincidirán con los nombres de archivo renombrados
 import Pagina1a from './pages/Pagina1a.jsx';
 import Pagina1b from './pages/Pagina1b.jsx';
 import Pagina2a from './pages/Pagina2a.jsx';
@@ -25,7 +25,9 @@ import initialHamburguesaData from './data/productoHamburguesa.json';
 import initialBistroData from './data/productoBistro.json';
 import initialPostreData from './data/productoPostre.json';
 
-// Función para procesar los datos (la usaremos para el estado inicial y las actualizaciones)
+// (El resto del archivo App.jsx permanece exactamente igual que en mi mensaje anterior)
+
+// Función para procesar los datos
 const processMenuData = (cafe, hamburguesa, bistro, postre) => {
   const safeFilter = (data, key, filterFn) => (data && data[key] ? data[key].filter(filterFn) : []);
   
