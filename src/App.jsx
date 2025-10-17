@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
+import React from 'react'; // <-- ¡AQUÍ ESTÁ LA CORRECCIÓN PRINCIPAL!
 
 // Importar todas las páginas estáticas
 import Pagina1a from './pages/Pagina1a.jsx';
@@ -15,7 +16,7 @@ import Pagina7b from './pages/Pagina7b.jsx';
 import Pagina8a from './pages/Pagina8a.jsx';
 import Pagina8b from './pages/Pagina8b.jsx';
 
-// Importar componentes y datos
+// Importar componentes y datos LOCALES de respaldo
 import MenuPage from './components/MenuPage.jsx';
 import MenuCategory from './components/MenuCategory.jsx';
 import JsonUploader from './components/JsonUploader.jsx';
@@ -23,7 +24,6 @@ import initialCafeData from './data/productoCafe.json';
 import initialHamburguesaData from './data/productoHamburguesa.json';
 import initialBistroData from './data/productoBistro.json';
 import initialPostreData from './data/productoPostre.json';
-
 
 // --- NUEVO COMPONENTE: FLIPBOOK VIEW ---
 const FlipbookView = ({ onClose, pages }) => {
@@ -44,7 +44,7 @@ const FlipbookView = ({ onClose, pages }) => {
         <div className="flipbook">
           {pages.map((page, index) => (
             <div
-              key={index}
+              key={`flipbook-page-${index}`}
               className={`flipbook-page ${index < currentPage ? 'flipped' : ''}`}
               style={{ zIndex: pages.length - index }}
               onClick={() => setCurrentPage(index < currentPage ? index : index + 1)}
@@ -67,7 +67,6 @@ const FlipbookView = ({ onClose, pages }) => {
 
 // Función para procesar los datos del menú
 const processMenuData = (cafe, hamburguesa, bistro, postre) => {
-    // ... (la función de procesamiento de datos no cambia)
     const safeFilter = (data, key, filterFn) => (data && data[key] ? data[key].filter(filterFn) : []);
     return {
         cafe: {
@@ -103,10 +102,9 @@ function App() {
   const componentRef = useRef();
   const [rawData, setRawData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [showFlipbook, setShowFlipbook] = useState(false); // Estado para el visor
+  const [showFlipbook, setShowFlipbook] = useState(false);
 
   useEffect(() => {
-    // ... (la lógica para cargar datos iniciales no cambia)
     const fetchInitialData = async () => {
       setIsLoading(true);
       try {
@@ -139,7 +137,6 @@ function App() {
   });
 
   const handleJsonUploadSuccess = (uploadedItems) => {
-    // ... (la lógica de actualización no cambia)
      setRawData(prevData => {
         const newData = { ...prevData };
         uploadedItems.forEach(item => {
@@ -218,7 +215,7 @@ function App() {
       {/* Este es el contenedor que se imprime */}
       <div ref={componentRef} className="menu-container">
           {menuPagesForFlipbook.map((page, index) => (
-              <React.Fragment key={index}>
+              <React.Fragment key={`print-page-${index}`}>
                   {page.front}
                   {page.back}
               </React.Fragment>
@@ -229,4 +226,3 @@ function App() {
 }
 
 export default App;
-
